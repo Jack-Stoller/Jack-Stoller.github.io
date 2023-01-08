@@ -1,0 +1,38 @@
+<style>
+    body {
+        padding-bottom: 150vw;
+    }
+
+    div {
+        position: absolute;
+
+        height: 50px;
+        width: 50px;
+        pointer-events: none;
+        will-change: transform;
+        background-color: red;
+        animation: Animation 2s ease infinite;
+    }
+
+    @keyframes Animation {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+</style>
+<body></body>
+<script>
+    const size = 50 + 8 + 8;
+    const count = Math.floor(window.innerWidth / size);
+
+    [...Array(1000)].forEach((_, i) => {
+        let div = document.createElement('div');
+        div.style.top = Math.floor(i / count) * size + 'px';
+        div.style.left = Math.floor(i % count) * size + 'px';
+        document.body.appendChild(div);
+    });
+</script>
